@@ -77,24 +77,24 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrowseCell" rowHeight="140" id="jca-Kz-Rdy" customClass="BrowseView" customModule="_3_0_ShopVC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="376" height="140"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrowseCell" rowHeight="152" id="jca-Kz-Rdy" customClass="BrowseView" customModule="_3_0_ShopVC" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="376" height="152"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jca-Kz-Rdy" id="iTn-ON-1Ys">
-                                                    <rect key="frame" x="0.0" y="0.0" width="376" height="139"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="376" height="151"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akt-aA-sgb">
-                                                            <rect key="frame" x="18" y="8" width="340" height="124"/>
+                                                            <rect key="frame" x="18" y="8" width="340" height="135.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5sa-Jv-nFl">
-                                                                    <rect key="frame" x="5" y="8" width="130" height="108"/>
+                                                                    <rect key="frame" x="5" y="8" width="130" height="119.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="130" id="8qi-i9-NeD"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFl-z2-O24">
-                                                                    <rect key="frame" x="151" y="52" width="181" height="20"/>
+                                                                    <rect key="frame" x="151" y="58" width="181" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="B4Q-fl-0NX"/>
                                                                     </constraints>
@@ -103,7 +103,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyArrow1" translatesAutoresizingMaskIntoConstraints="NO" id="Mah-RY-vfS">
-                                                                    <rect key="frame" x="315" y="50" width="25" height="25"/>
+                                                                    <rect key="frame" x="315" y="56" width="25" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="0ra-hr-GO2"/>
                                                                         <constraint firstAttribute="width" constant="25" id="cLO-lp-OSN"/>
@@ -439,7 +439,7 @@
         <!--Item-->
         <scene sceneID="0Yr-1d-iIg">
             <objects>
-                <viewController id="tlV-mv-qQb" sceneMemberID="viewController">
+                <viewController id="tlV-mv-qQb" customClass="ItemSV" customModule="_3_0_ShopVC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XLa-hQ-q3N"/>
                         <viewControllerLayoutGuide type="bottom" id="6Fc-cn-lsn"/>
