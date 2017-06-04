@@ -11,6 +11,8 @@ import Foundation
 class FeatureModelData {
     
     //This will be implemented in BrowseSV to prepare for FeatureSV
+    
+    //Featured Cell
     private var _featureModelTitleCell = [String]()
     private var _featureModelSubTextCell = [String]()
     private var _featureModeImageCell = [String]()
@@ -24,6 +26,8 @@ class FeatureModelData {
     
     
 //---------------------------------------
+    
+    //Featured Cell
     var featureModelTitleCell: [String] {
         return _featureModelTitleCell
         }
@@ -36,31 +40,34 @@ class FeatureModelData {
         return _featureModeImageCell
         }
     
+    
     //Featured Item
     var featureModelTitle: String {
         return _featureModelTitle
-    }
+        }
     
     var featureModelSubText1: String {
         return _featureModelSubText1
-    }
+        }
     
     var featureModelSubText2: String {
         return _featureModelSubText2
-    }
+        }
     
     var featureModelPrice: String {
         return _featureModePrice
-    }
+        }
     
     var featureModelImage: String {
         return _featureModeImage
-    }
+        }
     
 //---------------------------------------
     
-    init (title: String, subText1: String, subText2: String, price: String, image: String, titleCell: [String], subTextCell: [String], imageCell: [String]) {
+    init (title: String, subText1: String, subText2: String, price: String, image: String, titleCell: [String],
+          subTextCell: [String], imageCell: [String]) {
      
+        //Featured Cell
         _featureModelTitleCell = titleCell
         _featureModelSubTextCell = subTextCell
         _featureModeImageCell = imageCell

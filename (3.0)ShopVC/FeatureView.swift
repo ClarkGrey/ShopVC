@@ -11,12 +11,13 @@ import UIKit
 
 class FeatureView: UITableViewCell {
     
+    //For tableView Cells
     @IBOutlet var featureViewImage: UIImageView!
     @IBOutlet var featureViewTitle: UILabel!
     @IBOutlet var featureViewSubText: UILabel!
     
     
-    //
+    //For top view
     @IBOutlet var featureViewFTitle: UILabel!
     @IBOutlet var featureViewFSubText1: UILabel!
     @IBOutlet var featureViewFSubText2: UILabel!

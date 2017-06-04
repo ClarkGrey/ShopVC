@@ -28,61 +28,58 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         browseSVTableView.dataSource = self
         browseSVTableView.delegate = self
         
+        
         //BrowseSV catagories
         browseSVTitle = ["Amazon Echo", "Thermostat", "Smart DoorLocks", "Cameras",
-                         "Lights & Modules", "Sensors & Remotes"]
-        browseSVImages = ["blackAmazonEcho", "nestThermo copy", "kevoSmartLock (self)", "skyBellModern",
+                         "Energy", "Sensors"]
+        browseSVImages = ["whiteAmazon Echo", "nestThermo copy", "kevoSmartLock (self)", "skyBellModern",
                          "2gigLightBulb", "door&WindowSensor"]
+        
         
         //Loading FeatureSV by BrowseSV catagory
         featureSVArray = [
             
             FeatureModelData(title: "Amazon Echo - Alexa!", subText1: "Voice Interaction, Blah Blah,",
-                             subText2: "2nd Generation", price: "+ $5.00/month",
-                             image: "blackAmazonEcho",
+                             subText2: "2nd Generation", price: "+ $5.00/month", image: "blackAmazonEcho",
                              titleCell: ["Amazon Echo - Alexa!", "Google Home", "Echo Dot"],
                              subTextCell: ["New!", "", ""],
                              imageCell: ["blackAmazonEcho", "GoogleHome", "echoDot"]),
             
             FeatureModelData(title: "Nest Thermostat", subText1: "Learning Thermostat, 3rd Generation,",
-                             subText2: "Energy Efficient", price: "+ $6.00/month",
-                             image: "nest3",
-                             titleCell: ["Nest 3rd Generation Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
+                             subText2: "Energy Efficient", price: "+ $6.00/month", image: "nest3",
+                             titleCell: ["Nest 3rd Generation", "Lyric T5 Thermostat", "Smart Thermostat"],
                              subTextCell: ["New!", "", ""],
                              imageCell: ["nestThermo copy", "lyricT5Thermo", "2gigThermostat"]),
             
             FeatureModelData(title: "Smart Deadbolt", subText1: "Touch - Open, Voice Controlled,",
-                             subText2: "2nd Generation", price: "+ $6.00/month",
-                             image: "kevoSmartLock",
-                             titleCell: ["Kevo Smart Touch Deadbolt", "Smart Door Locks - Deadbolt", "Smart Door Locks – Lever"],
-                             subTextCell: ["", "", ""],
+                             subText2: "2nd Generation", price: "+ $6.00/month", image: "kevoSmartLock",
+                             titleCell: ["Kevo Smart Touch Deadbolt", "Smart Door Locks - Deadbolt", "Smart Door Locks – Lever "],
+                             subTextCell: ["New!", "", ""],
                              imageCell: ["kevoSmartLock (self)", "deadBolt","2GIGSmartDoorKnob"]),
             
             FeatureModelData(title: "Doorbell Camera", subText1: "HD Live Video, Phone Notifications,",
-                             subText2: "Built in Speaker & Microphone", price: "+ $8.00/month",
-                             image: "skyBellSelf",
+                             subText2: "Built in Speaker & Microphone", price: "+ $8.00/month", image: "skyBellSelf",
                              titleCell: ["Doorbell Camera", "Indoor HD Wifi Camera ", "Outdoor Camera", "Outdoor Mini Dome",
                                          "Indoor Image Sensor"],
                              subTextCell: ["New!", "New!", "", "", ""],
                              imageCell: ["skyBellModern", "2GIG-CAM-100W", "alarmOutCamera", "2GIG-CAM-250P", "imageSensor"]),
             
             FeatureModelData(title: "Smart Light Bulbs", subText1: "Set Timmers, App Contolled,",
-                             subText2: "Energy Efficient", price: "$40.00/ea.",
-                             image: "2gigLightBulb",
+                             subText2: "Energy Efficient", price: "$40.00/ea.", image: "2gigLightBulb",
                              titleCell: ["Smart Light Bulbs", "Smart In-Wall Switches", "Smart In-Wall Outlets",
-                                        "Minimote Remote Controller", "Smart Plug-In Dimmer Module",
-                                         "Smart Garage Door Controller", "Takeover Module"],
-                             subTextCell: ["New!", "", "", "", "", "", ""],
-                             imageCell: ["2gigLightBulb", "smartLightSwitch", "SmartWallOutlets", "MinimoteRemote", "Smart-Plug-Module", "SmartGarage", "TakeoverModule"]),
+                                        "Minimote Remote", "Smart Plug-In Module", "Takeover Module"],
+                             subTextCell: ["New!", "", "", "", "", ""],
+                             imageCell: ["2gigLightBulb", "smartLightSwitch", "SmartWallOutlets", "MinimoteRemote",
+                                         "Smart-Plug-Module", "TakeoverModule"]),
             
             FeatureModelData(title: "Door/Window Contact", subText1: "Thinner, More Durable,",
-                             subText2: "Fast Wireless", price: "$25.00/ea.",
-                             image: "door&WindowSensor",
-                             titleCell: ["Door/Window", "Motion Detector", "CO Detector (CO3)",
-                                         "Glass Break Detector",  "Smoke/Heat/Freeze Sensor", "4-Button Keyfob Remote",
+                             subText2: "Fast Wireless", price: "$25.00/ea.", image: "door&WindowSensor",
+                             titleCell: ["Door/Window", "Motion Detector", "Smart Garage Door", "CO Detector (CO3)",
+                                         "Glass Break Detector", "Smoke/Heat/Freeze Sensor", "4-Button Keyfob Remote",
                                          "Panic Button"],
-                             subTextCell: ["", "", "", "", "", "", ""],
-                             imageCell: ["door&WindowSensor", "MotionDetector", "CODetector", "GlassBreakDetector", "SmokeSensor", "KeyfobRemote", "PanicButton"])
+                             subTextCell: ["", "", "", "", "", "", "", ""],
+                             imageCell: ["door&WindowSensor", "MotionDetector", "SmartGarage", "CODetector", "GlassBreakDetector",
+                                         "SmokeSensor", "KeyfobRemote", "PanicButton"])
             
             ]
         
@@ -112,6 +109,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
         }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         myIndex = indexPath.row
@@ -120,11 +118,13 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //Setting Refrences
         let indexPath : NSIndexPath = self.browseSVTableView.indexPathForSelectedRow! as NSIndexPath
         let destination = segue.destination as! FeatureSV
         let featureModel : FeatureModelData
-        featureModel = featureSVArray[indexPath.row] //SV refrence might not be an accurate refrence
+        featureModel = featureSVArray[indexPath.row] //featureSVArray might not be the best accurate refrence
         
+        //Featured Cell
         destination.featureSVTitleCell = featureModel.featureModelTitleCell
         destination.featureSVSubTextCell = featureModel.featureModelSubTextCell
         destination.featureSVImageCell = featureModel.featureModelImageCell

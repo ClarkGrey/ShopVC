@@ -14,6 +14,7 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var featureSVTableView: UITableView!
     @IBOutlet var numberOfResults: UILabel!
     
+    //Featured Cell
     var featureSVTitleCell = [String]()
     var featureSVSubTextCell = [String]()
     var featureSVImageCell = [String]()
@@ -51,6 +52,8 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureCell", for: indexPath) as! FeatureView
+        
+        //Featured Cell's
         cell.featureViewTitle.text = featureSVTitleCell[indexPath.row]
         cell.featureViewSubText.text = featureSVSubTextCell[indexPath.row]
         cell.featureViewImage.image = UIImage(named: featureSVImageCell[indexPath.row])

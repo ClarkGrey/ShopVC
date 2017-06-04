@@ -8,28 +8,87 @@
 
 import UIKit
 
-class ItemSV: UIViewController {
+class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet var itemSVTableView: UITableView!
+    @IBOutlet var itemSVScrollView: UIScrollView!
+    
+    //Item Cell's
+    var itemSVTitleCell = [String]()
+    
+    var itemSVTitle = [String]()
+    var itemSVPrice = [String]()
+    
+    
+//---------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        itemSVTableView.delegate = self
+        itemSVTableView.dataSource = self
+        
+        
+        itemSVTitleCell = ["Tech Specs", "Frequently Asked Questions", "What's Included",
+                           "Warranty & Installation"]
+        
+        
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        }
+//---------------------------------------
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return itemSVTitleCell.count
+        }
+    
+    
+    //Update, didSelectRow (maybe)
     
 
-    /*
-    // MARK: - Navigation
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemView
+        
+        //Item Cell's
+        cell.itemViewTitleCell.text = itemSVTitleCell[indexPath.row]
+        
+        //Item View
+        
+        
+        return cell
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//---------------------------------------
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
