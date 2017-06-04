@@ -10,14 +10,21 @@ import UIKit
 
 class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var browseSVTableView: UITableView!
+    
     var browseSVTitle = [String]()
     var browseSVImages = [String]()
     
-    @IBOutlet var browseSVTableView: UITableView!
+    //This is what was missing!, Very Important!
+    var myIndex = 0
    
     //This is from FeatureModel
     var featureSVArray = [FeatureModelData]()
-    var myIndex = 0     //This is what was missing!, Very Important
+    
+    //ItemSV User Interface
+    var itemSVArray = [ItemModelData]()
+    
+    
     
     
     
@@ -80,9 +87,24 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                              subTextCell: ["", "", "", "", "", "", "", ""],
                              imageCell: ["door&WindowSensor", "MotionDetector", "SmartGarage", "CODetector", "GlassBreakDetector",
                                          "SmokeSensor", "KeyfobRemote", "PanicButton"])
-            
-            ]
+                        ]
         
+        
+        //Loading ItemSV by FeatureSV Item's
+        itemSVArray = [
+            
+            ItemModelData(Title: ["Amazon Echo - Alexa", "Google Home", "Echo Dot"],
+                          Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"]),
+            
+            ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
+                          Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"])
+            
+            
+            
+            
+            
+            
+        ]
         
        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -109,7 +131,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
         }
     
-    
+    //This function is very important for this view controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         myIndex = indexPath.row
@@ -135,6 +157,18 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.featureSVSubText2 = featureModel.featureModelSubText2
         destination.featureSVPrice = featureModel.featureModelPrice
         destination.featureSVImage = featureModel.featureModelImage
+        
+        //----------------------------------------------------------------
+        
+        //Setting Item Model with Feaature refrences
+        let itemModel : ItemModelData
+        itemModel = itemSVArray[indexPath.row]
+        
+        destination.featureSVItemSVTitle = itemModel.itemModelTitle
+        destination.featureSVItemSVPrice = itemModel.itemModelPrice
+        
+        
+        
         
         }
     
@@ -183,3 +217,8 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 //---------------------------------------
 }
+
+
+
+
+

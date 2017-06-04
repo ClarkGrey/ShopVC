@@ -13,11 +13,14 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var itemSVTableView: UITableView!
     @IBOutlet var itemSVScrollView: UIScrollView!
     
+    var myIndex = 0
+    
     //Item Cell's
     var itemSVTitleCell = [String]()
     
-    var itemSVTitle = [String]()
-    var itemSVPrice = [String]()
+    //Item Top View
+    var itemSVTitle = String() //THESE WHERE THE PROBLEM (not supposed to be an array!!!)
+    var itemSVPrice = String()
     
     
 //---------------------------------------
@@ -49,10 +52,9 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return itemSVTitleCell.count
         }
     
-    
-    //Update, didSelectRow (maybe)
-    
 
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemView
@@ -60,8 +62,9 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //Item Cell's
         cell.itemViewTitleCell.text = itemSVTitleCell[indexPath.row]
         
-        //Item View
-        
+        //Item Top View
+        cell.itemViewTitle.text = itemSVTitle
+        cell.itemViewPrice.text = itemSVPrice
         
         return cell
         }

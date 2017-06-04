@@ -13,6 +13,7 @@ class ItemView: UITableViewCell {
     //For tableView Cells
     @IBOutlet var itemViewTitleCell: UILabel!
     
+    //For Top View
     @IBOutlet var itemViewTitle: UILabel!
     @IBOutlet var itemViewPrice: UILabel!
     

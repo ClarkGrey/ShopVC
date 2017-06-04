@@ -11,8 +11,8 @@ import Foundation
 
 class ItemModelData {
 
-    private var _itemSVTitle = [String]()
-    private var _itemSVPrice = [String]()
+    private var _itemModelTitle = [String]()
+    private var _itemModelPrice = [String]()
 
 
 
@@ -20,14 +20,14 @@ class ItemModelData {
 
 //---------------------------------------
 
-    var itemSVlTitle: [String] {
-        return _itemSVTitle
-    }
+    var itemModelTitle: [String] {
+        return _itemModelTitle
+        }
 
 
-    var itemSVlPrice: [String] {
-        return _itemSVPrice
-    }
+    var itemModelPrice: [String] {
+        return _itemModelPrice
+        }
 
 
 
@@ -41,25 +41,11 @@ class ItemModelData {
 
     init (Title: [String], Price: [String]) {
         
-        _itemSVTitle = Title
-        _itemSVPrice = Price
+        _itemModelTitle = Title
+        _itemModelPrice = Price
         
         
-        
-        
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 //---------------------------------------
 }

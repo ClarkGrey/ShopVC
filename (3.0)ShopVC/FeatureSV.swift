@@ -14,6 +14,8 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var featureSVTableView: UITableView!
     @IBOutlet var numberOfResults: UILabel!
     
+    var myIndex = 0
+    
     //Featured Cell
     var featureSVTitleCell = [String]()
     var featureSVSubTextCell = [String]()
@@ -26,6 +28,9 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var featureSVPrice = String()
     var featureSVImage = String()
     
+    //ItmeSV Top View, FeatureSV Refrence
+    var featureSVItemSVTitle = [String]()
+    var featureSVItemSVPrice = [String]()
     
         
 //---------------------------------------
@@ -46,6 +51,12 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return featureSVTitleCell.count
+        }
+    
+    //This line has no real affect or value, not like in the last view
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        myIndex = indexPath.row
         }
     
     
@@ -69,7 +80,22 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //Setting ItemSV References
+        let indexPath : NSIndexPath = self.featureSVTableView.indexPathForSelectedRow! as NSIndexPath
+        let destination = segue.destination as! ItemSV
+        
+        //ItemSV Top View
+        destination.itemSVTitle = featureSVItemSVTitle[indexPath.row]
+        destination.itemSVPrice = featureSVItemSVPrice[indexPath.row]
+        
+        
+        
+        //ItemSV TableView Cells
+        
     
+        }
     
 //---------------------------------------
 }

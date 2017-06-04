@@ -370,6 +370,7 @@
 				0400CDBA1ED7A45000CD1191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
