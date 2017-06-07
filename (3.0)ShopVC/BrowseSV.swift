@@ -91,13 +91,20 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         //Loading ItemSV by FeatureSV Item's
+        let amazonEchoAlexa = ["MotionDetector", "CODetector"]
+        
         itemSVArray = [
             
+            //amazonEchoAlexa = ["blackAmazonEcho", "MotionDetector"] //Testing
+            
             ItemModelData(Title: ["Amazon Echo - Alexa", "Google Home", "Echo Dot"],
-                          Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"]),
+                          Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
+                          ScrollViewImages: ["\(amazonEchoAlexa)", "MotionDetector", "CODetector"]),
+                            
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
-                          Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"])
+                          Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"],
+                          ScrollViewImages: ["door&WindowSensor"])
             
             
             
@@ -164,11 +171,12 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let itemModel : ItemModelData
         itemModel = itemSVArray[indexPath.row]
         
+        //Top View
         destination.featureSVItemSVTitle = itemModel.itemModelTitle
         destination.featureSVItemSVPrice = itemModel.itemModelPrice
         
-        
-        
+        //ScrollView Image Array
+        destination.featureSVItemSVScrollView = itemModel.itemModelScrollView
         
         }
     

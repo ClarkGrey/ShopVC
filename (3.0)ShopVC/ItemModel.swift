@@ -10,26 +10,30 @@ import Foundation
 
 
 class ItemModelData {
-
+    
+    //For Top View
     private var _itemModelTitle = [String]()
     private var _itemModelPrice = [String]()
 
-
-
+    //For ScrollView
+    private var _itemModelScrollView = [String]()
 
 
 //---------------------------------------
-
+    //For Top View
     var itemModelTitle: [String] {
         return _itemModelTitle
         }
-
-
+    
     var itemModelPrice: [String] {
         return _itemModelPrice
         }
-
-
+    
+    
+    //For ScrollView
+    var itemModelScrollView: [String] {
+        return _itemModelScrollView
+        }
 
 
 
@@ -39,11 +43,11 @@ class ItemModelData {
 
 //---------------------------------------
 
-    init (Title: [String], Price: [String]) {
+    init (Title: [String], Price: [String], ScrollViewImages: [String]) {
         
         _itemModelTitle = Title
         _itemModelPrice = Price
-        
+        _itemModelScrollView = ScrollViewImages
         
         }
 

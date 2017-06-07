@@ -31,6 +31,8 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //ItmeSV Top View, FeatureSV Refrence
     var featureSVItemSVTitle = [String]()
     var featureSVItemSVPrice = [String]()
+    //ItmeSV ScrollView, FeatureSV Refrence
+    var featureSVItemSVScrollView = [String]()
     
         
 //---------------------------------------
@@ -90,12 +92,33 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.itemSVTitle = featureSVItemSVTitle[indexPath.row]
         destination.itemSVPrice = featureSVItemSVPrice[indexPath.row]
         
+        //ItemSV ScrollView Image Array
+        destination.itemSVImageArray = [featureSVItemSVScrollView[indexPath.row]]
         
         
         //ItemSV TableView Cells
         
     
         }
+//---------------------------------------
+    
+  //Item Image Array
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 //---------------------------------------
 }

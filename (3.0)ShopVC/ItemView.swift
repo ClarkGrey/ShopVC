@@ -17,6 +17,8 @@ class ItemView: UITableViewCell {
     @IBOutlet var itemViewTitle: UILabel!
     @IBOutlet var itemViewPrice: UILabel!
     
+    //UIScrollView
+    //@IBOutlet var itemViewScrollView: UIScrollView!
     
     
 //---------------------------------------
