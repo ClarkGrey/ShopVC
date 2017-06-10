@@ -8,10 +8,11 @@
 
 import UIKit
 
+//Note: In the future try implementing multi-media for the first product image, most likely it will be a 10 - 15 second clip that           plays in a loop. (Like iOS 11 App Store)
+
 class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet var itemSVTableView: UITableView!
-    //Eares IBOutlet for ScrollView
     
     var myIndex = 0
     
@@ -23,11 +24,12 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     var itemSVPrice = String()
     
     //Item ScrollView Image Array
+    @IBOutlet var itemSVScrollView: UIScrollView!
+    var itemSVUIImageArray = [UIImageView]()
     var itemSVImageArray = [String]()
     
-    @IBOutlet var itemSVScrollView: UIScrollView!
     @IBOutlet var pageController: UIPageControl!
-    var itemSVUIImageArray = [UIImageView]()
+    
     
 //---------------------------------------
     override func viewDidLoad() {
@@ -51,7 +53,6 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-       
         }
 //---------------------------------------
     
@@ -80,9 +81,9 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         cell.itemViewTitle.text = itemSVTitle
         cell.itemViewPrice.text = itemSVPrice
         
-        //Item ScrollView Image Array
-        
-        
+        //Item ScrollView Page Controller
+        pageController.numberOfPages = itemSVImageArray.count
+            
         return cell
         }
     
@@ -93,28 +94,28 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         }
 //---------------------------------------
     
+    
     override func viewDidAppear(_ animated: Bool) {
+    
+        var imageArrayString = itemSVImageArray //This was the problem!!!!!!!!!
         
-        //let imagesTest = ["whiteAmazon Echo", "blackAmazonEcho"]
-        
-        for x in 0..<4 { //Was itemSVUIImageArray.count
-            let image = UIImage(named: "blackAmazonEcho") //Was itemSVImageArray
-            let imageView = UIImageView(image: image)
-            itemSVUIImageArray.append(imageView)
-            
-            imageView.contentMode = .scaleAspectFit
-            let xPosition = self.itemSVScrollView.frame.width * CGFloat(x)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: self.itemSVScrollView.frame.width, //x:  , y: Top left corner
+        for x in 0..<itemSVImageArray.count {
+            let imageName = UIImage(named: imageArrayString[x])
+            let imageDisplay = UIImageView(image: imageName)
+            itemSVUIImageArray.append(imageDisplay)
+     
+            imageDisplay.contentMode = .scaleAspectFit
+            let xPosition = self.itemSVScrollView.frame.width * CGFloat(x) + 15 //Left Space
+            imageDisplay.frame = CGRect(x: xPosition, y: 0, width: self.itemSVScrollView.frame.width - 30, //Right Space
                 height: self.itemSVScrollView.frame.height)
-            
-            itemSVScrollView.contentSize.width = itemSVScrollView.frame.width * CGFloat(x + 1)
-            itemSVScrollView.addSubview(imageView)
+     
+        itemSVScrollView.contentSize.width  = itemSVScrollView.frame.width * CGFloat(x + 1)
+        itemSVScrollView.addSubview(imageDisplay)
         }
-        
-        itemSVScrollView.clipsToBounds = false
-        pageController.numberOfPages = itemSVImageArray.count //Need to be here! Was the problem
-        //Currently only displays one dot because only 1 image
-    }
+     
+     itemSVScrollView.clipsToBounds = false
+     pageController.numberOfPages = itemSVImageArray.count
+     }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -124,16 +125,15 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         }
     
     
+    func titleAndPrice() {
+        
+        //Forgot wtf i was doing here
+        
+    }
+    
+    
 //---------------------------------------
 }
-
-
-
-
-
-
-
-
 
 
 

@@ -18,8 +18,7 @@ class ItemView: UITableViewCell {
     @IBOutlet var itemViewPrice: UILabel!
     
     //UIScrollView
-    //@IBOutlet var itemViewScrollView: UIScrollView!
-    
+    // Not needed
     
 //---------------------------------------
     override func awakeFromNib() {

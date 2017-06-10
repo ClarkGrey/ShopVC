@@ -24,7 +24,7 @@ extension UIView {
             if materialKey {
                 
                 self.layer.masksToBounds = false
-                self.layer.cornerRadius = 8
+                self.layer.cornerRadius = 6
                 self.layer.shadowOpacity = 2.0
                 self.layer.shadowRadius = 1
                 self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)

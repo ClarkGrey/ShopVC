@@ -16,10 +16,11 @@ class ItemModelData {
     private var _itemModelPrice = [String]()
 
     //For ScrollView
-    private var _itemModelScrollView = [String]()
+    private var _itemModelScrollView = [[String]]()
 
 
 //---------------------------------------
+    
     //For Top View
     var itemModelTitle: [String] {
         return _itemModelTitle
@@ -31,19 +32,14 @@ class ItemModelData {
     
     
     //For ScrollView
-    var itemModelScrollView: [String] {
+    var itemModelScrollView: [[String]] {
         return _itemModelScrollView
         }
 
 
-
-
-
-
-
 //---------------------------------------
 
-    init (Title: [String], Price: [String], ScrollViewImages: [String]) {
+    init (Title: [String], Price: [String], ScrollViewImages: [[String]]) {
         
         _itemModelTitle = Title
         _itemModelPrice = Price

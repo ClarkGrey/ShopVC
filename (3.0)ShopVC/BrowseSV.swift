@@ -47,7 +47,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         featureSVArray = [
             
             FeatureModelData(title: "Amazon Echo - Alexa!", subText1: "Voice Interaction, Blah Blah,",
-                             subText2: "2nd Generation", price: "+ $5.00/month", image: "blackAmazonEcho",
+                             subText2: "2nd Generation", price: "", image: "amazonFeature3",
                              titleCell: ["Amazon Echo - Alexa!", "Google Home", "Echo Dot"],
                              subTextCell: ["New!", "", ""],
                              imageCell: ["blackAmazonEcho", "GoogleHome", "echoDot"]),
@@ -90,25 +90,23 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         ]
         
         
+        
         //Loading ItemSV by FeatureSV Item's
-        let amazonEchoAlexa = ["MotionDetector", "CODetector"]
+        //let amazonEchoAlexa = ["MotionDetector", "CODetector"]
         
         itemSVArray = [
             
-            //amazonEchoAlexa = ["blackAmazonEcho", "MotionDetector"] //Testing
-            
             ItemModelData(Title: ["Amazon Echo - Alexa", "Google Home", "Echo Dot"],
-                          Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
-                          ScrollViewImages: ["\(amazonEchoAlexa)", "MotionDetector", "CODetector"]),
+                           Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
+                           ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
+                                              ["GoogleHome", "echoDot"],
+                                              ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]]),
                             
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
-                          Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"],
-                          ScrollViewImages: ["door&WindowSensor"])
-            
-            
-            
-            
+                           Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"],
+                           ScrollViewImages: [["nestSpecs", "nestThermo copy", "nestBlue"],
+                                              ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"]])
             
             
         ]
@@ -120,8 +118,6 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //---------------------------------------
 
     // MARK: - Table view data source
-
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
@@ -147,7 +143,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //Setting Refrences
+        //Setting ItemModel with FeatureSV refrences
         let indexPath : NSIndexPath = self.browseSVTableView.indexPathForSelectedRow! as NSIndexPath
         let destination = segue.destination as! FeatureSV
         let featureModel : FeatureModelData
@@ -167,7 +163,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //----------------------------------------------------------------
         
-        //Setting Item Model with Feaature refrences
+        //Setting ItemModel with FeatureSV refrences
         let itemModel : ItemModelData
         itemModel = itemSVArray[indexPath.row]
         
@@ -176,7 +172,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.featureSVItemSVPrice = itemModel.itemModelPrice
         
         //ScrollView Image Array
-        destination.featureSVItemSVScrollView = itemModel.itemModelScrollView
+        destination.featureSVItemSVScrollView = itemModel.itemModelScrollView 
         
         }
     

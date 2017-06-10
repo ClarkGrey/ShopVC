@@ -8,12 +8,15 @@
 
 import UIKit
 
+//Note: In the future try implementing multi-media for the feature image here, most likely it will be a 10 - 15 second clip that           plays in a loop. (Like iOS 11 App Store)
+
 class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet var featureSVTableView: UITableView!
     @IBOutlet var numberOfResults: UILabel!
     
+    //Not being used properly
     var myIndex = 0
     
     //Featured Cell
@@ -31,8 +34,9 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //ItmeSV Top View, FeatureSV Refrence
     var featureSVItemSVTitle = [String]()
     var featureSVItemSVPrice = [String]()
+    
     //ItmeSV ScrollView, FeatureSV Refrence
-    var featureSVItemSVScrollView = [String]()
+    var featureSVItemSVScrollView = [[String]]()
     
         
 //---------------------------------------
@@ -83,8 +87,9 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //let indexPath : NSIndexPath = self.browseSVTableView.indexPathForSelectedRow! as NSIndexPath
         
-        //Setting ItemSV References
+        //Setting FeatureSV with ItemSV refrences
         let indexPath : NSIndexPath = self.featureSVTableView.indexPathForSelectedRow! as NSIndexPath
         let destination = segue.destination as! ItemSV
         
@@ -93,32 +98,25 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.itemSVPrice = featureSVItemSVPrice[indexPath.row]
         
         //ItemSV ScrollView Image Array
-        destination.itemSVImageArray = [featureSVItemSVScrollView[indexPath.row]]
-        
+        destination.itemSVImageArray = featureSVItemSVScrollView[indexPath.row]
+       
         
         //ItemSV TableView Cells
-        
+            //Needs Update
     
         }
-//---------------------------------------
-    
-  //Item Image Array
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 //---------------------------------------
 }
+
+
+
+
+
+
+
+
+
+
+
+
