@@ -20,6 +20,10 @@ class ItemView: UITableViewCell {
     //UIScrollView
     // Not needed
     
+    //Display
+    @IBOutlet var itemViewIDNumber: UILabel!
+    
+    
 //---------------------------------------
     override func awakeFromNib() {
         super.awakeFromNib()

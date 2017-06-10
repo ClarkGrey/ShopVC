@@ -674,6 +674,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="itemViewIDNumber" destination="kFu-tG-Sjr" id="62E-tq-xnh"/>
                                             <outlet property="itemViewPrice" destination="y7d-0c-FRq" id="efR-E5-fIX"/>
                                             <outlet property="itemViewTitle" destination="aX2-Gb-wXW" id="d3s-2o-gzf"/>
                                             <outlet property="itemViewTitleCell" destination="7PN-bx-fOh" id="Znz-PQ-GPZ"/>

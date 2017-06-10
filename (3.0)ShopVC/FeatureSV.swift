@@ -38,6 +38,9 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //ItmeSV ScrollView, FeatureSV Refrence
     var featureSVItemSVScrollView = [[String]]()
     
+    //ItmeSVDisplay
+    var featureSVItemSVIDNumber = [String]()
+    
         
 //---------------------------------------
     override func viewDidLoad() {
@@ -100,6 +103,8 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //ItemSV ScrollView Image Array
         destination.itemSVImageArray = featureSVItemSVScrollView[indexPath.row]
        
+        //Display
+        destination.ItemSVIDNumber = featureSVItemSVIDNumber[indexPath.row]
         
         //ItemSV TableView Cells
             //Needs Update

@@ -28,6 +28,9 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     var itemSVUIImageArray = [UIImageView]()
     var itemSVImageArray = [String]()
     
+    //Display
+    var ItemSVIDNumber = String()
+    
     @IBOutlet var pageController: UIPageControl!
     
     
@@ -83,6 +86,9 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         //Item ScrollView Page Controller
         pageController.numberOfPages = itemSVImageArray.count
+        
+        //Display
+        cell.itemViewIDNumber.text = ItemSVIDNumber
             
         return cell
         }

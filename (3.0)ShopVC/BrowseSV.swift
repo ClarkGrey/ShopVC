@@ -97,16 +97,19 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         itemSVArray = [
             
             ItemModelData(Title: ["Amazon Echo - Alexa", "Google Home", "Echo Dot"],
-                           Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
-                           ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
+                          Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
+                          IDNumber: ["R: 300018378", "R: 200018400", "R: 100018600"],
+                          ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
                                               ["GoogleHome", "echoDot"],
                                               ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]]),
                             
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
                            Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"],
+                           IDNumber: ["R: 300018378", "R: 200018400", "R: 100018600"],
                            ScrollViewImages: [["nestSpecs", "nestThermo copy", "nestBlue"],
-                                              ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"]])
+                                              ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"],
+                                              ["2gigThermostat", "whiteAmazon Echo", "blackAmazonEcho"]])
             
             
         ]
@@ -172,7 +175,12 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.featureSVItemSVPrice = itemModel.itemModelPrice
         
         //ScrollView Image Array
-        destination.featureSVItemSVScrollView = itemModel.itemModelScrollView 
+        destination.featureSVItemSVScrollView = itemModel.itemModelScrollView
+        
+        //Display
+        destination.featureSVItemSVIDNumber = itemModel.itemModelIDNumber
+        
+        
         
         }
     
