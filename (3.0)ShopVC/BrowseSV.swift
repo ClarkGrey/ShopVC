@@ -98,10 +98,11 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             ItemModelData(Title: ["Amazon Echo - Alexa", "Google Home", "Echo Dot"],
                           Price: ["+ $5.00/month", "+ $4.00/month", "+ $2.00/month"],
-                          IDNumber: ["R: 300018378", "R: 200018400", "R: 100018600"],
+                          IDNumber: ["Division 034", "Division 016", "Division 048"],
                           ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
                                               ["GoogleHome", "echoDot"],
-                                              ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]]),
+                                              ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]],
+                          QntyNumbers: [[1, 2, 3,4 ,5], [1, 2, 3], [1, 2]]),
                             
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
@@ -109,7 +110,8 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                            IDNumber: ["R: 300018378", "R: 200018400", "R: 100018600"],
                            ScrollViewImages: [["nestSpecs", "nestThermo copy", "nestBlue"],
                                               ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"],
-                                              ["2gigThermostat", "whiteAmazon Echo", "blackAmazonEcho"]])
+                                              ["2gigThermostat", "whiteAmazon Echo", "blackAmazonEcho"]],
+                           QntyNumbers: [[1, 2], [1, 2], [1, 2]])
             
             
         ]
@@ -179,7 +181,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //Display
         destination.featureSVItemSVIDNumber = itemModel.itemModelIDNumber
-        
+        destination.featureSVItemSVQntyNumbers = itemModel.itemModelQntyNumbers
         
         
         }

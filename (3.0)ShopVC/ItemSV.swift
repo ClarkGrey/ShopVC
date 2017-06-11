@@ -10,7 +10,7 @@ import UIKit
 
 //Note: In the future try implementing multi-media for the first product image, most likely it will be a 10 - 15 second clip that           plays in a loop. (Like iOS 11 App Store)
 
-class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet var itemSVTableView: UITableView!
     
@@ -33,6 +33,17 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     
     @IBOutlet var pageController: UIPageControl!
     
+    //Popups
+    @IBOutlet var qntyCenterConstraint: NSLayoutConstraint!
+    @IBOutlet var qntyPopupView: UIView!
+    @IBOutlet var backgroundPopupButton: UIButton!
+    @IBOutlet var backgroundPopupCenterConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var qntyPickerView: UIPickerView!
+    @IBOutlet var qntyTextField: UITextField!
+    var ItemSVQntyNumbers = [Int]()
+    
+    
     
 //---------------------------------------
     override func viewDidLoad() {
@@ -43,6 +54,13 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         itemSVScrollView.delegate = self
         itemSVScrollView.isPagingEnabled = true
+        
+        qntyPopupView.layer.cornerRadius = 12
+        qntyPopupView.layer.masksToBounds = true
+        
+        qntyPickerView.delegate = self
+        qntyPickerView.dataSource = self
+       
         
         
         itemSVTitleCell = ["Tech Specs", "Frequently Asked Questions", "What's Included",
@@ -58,7 +76,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         }
 //---------------------------------------
-    
+    //TableView 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -99,7 +117,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         }
 //---------------------------------------
-    
+    //ScrollView Images
     
     override func viewDidAppear(_ animated: Bool) {
     
@@ -128,14 +146,73 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         let page = scrollView.contentOffset.x / scrollView.frame.size.width
         pageController.currentPage = Int(page)
-        }
+    }
     
     
     func titleAndPrice() {
         
         //Forgot wtf i was doing here
-        
     }
+    
+    
+//---------------------------------------
+    //Popups (Qnty)
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ItemSVQntyNumbers.count
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(ItemSVQntyNumbers[row])"
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        qntyTextField.text = "\(ItemSVQntyNumbers[row])"
+        }
+    
+    
+    
+    @IBAction func qntyPopupPresses(_ sender: Any) {
+        
+        qntyCenterConstraint.constant = 0
+        backgroundPopupCenterConstraint.constant = 0
+        qntyPopupView.isHidden = false
+        backgroundPopupButton.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
+                       options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
+        
+        UIView.animate(withDuration: 0.9, animations: {
+            self.backgroundPopupButton.alpha = 0.5 } )
+        }
+    
+    @IBAction func qntyPopupClose(_ sender: Any) {
+        
+        qntyCenterConstraint.constant = -400
+        backgroundPopupCenterConstraint.constant = 450
+        qntyPopupView.isHidden = true
+        backgroundPopupButton.isHidden = true
+        UIView.animate(withDuration: 0.0, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundPopupButton.alpha = 0.0 } )
+        }
+    
+  
+    @IBAction func backgroundPopupClose(_ sender: Any) {
+        
+        qntyCenterConstraint.constant = -400
+        backgroundPopupCenterConstraint.constant = 450
+        qntyPopupView.isHidden = true
+        backgroundPopupButton.isHidden = true
+        UIView.animate(withDuration: 0.0, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundPopupButton.alpha = 0.0 } )
+        }
+    
     
     
 //---------------------------------------

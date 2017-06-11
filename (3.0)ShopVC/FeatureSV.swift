@@ -40,6 +40,7 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //ItmeSVDisplay
     var featureSVItemSVIDNumber = [String]()
+    var featureSVItemSVQntyNumbers = [[Int]]()
     
         
 //---------------------------------------
@@ -105,6 +106,7 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
        
         //Display
         destination.ItemSVIDNumber = featureSVItemSVIDNumber[indexPath.row]
+        destination.ItemSVQntyNumbers = featureSVItemSVQntyNumbers[indexPath.row]
         
         //ItemSV TableView Cells
             //Needs Update

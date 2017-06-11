@@ -20,6 +20,7 @@ class ItemModelData {
 
     //Display
     private var _itemModelIDNumber = [String]()
+    private var _itemModelQntyNumbers = [[Int]]()
     
 //---------------------------------------
     
@@ -43,15 +44,19 @@ class ItemModelData {
         return _itemModelIDNumber
     }
     
+    var itemModelQntyNumbers: [[Int]] {
+        return _itemModelQntyNumbers
+    }
 
 //---------------------------------------
 
-    init (Title: [String], Price: [String], IDNumber: [String], ScrollViewImages: [[String]]) {
+    init (Title: [String], Price: [String], IDNumber: [String], ScrollViewImages: [[String]], QntyNumbers: [[Int]]) {
         
         _itemModelTitle = Title
         _itemModelPrice = Price
         _itemModelIDNumber = IDNumber
         _itemModelScrollView = ScrollViewImages
+        _itemModelQntyNumbers = QntyNumbers
         
         
         }
