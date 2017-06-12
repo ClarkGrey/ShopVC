@@ -102,8 +102,9 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                           ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
                                               ["GoogleHome", "echoDot"],
                                               ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]],
-                          QntyNumbers: [[1, 2, 3,4 ,5], [1, 2, 3], [1, 2]]),
-                            
+                          QntyNumbers: [[1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3], [1, 2]],
+                          Types: [["Blue", "Grey", "White"], ["Orange", "Grey", "Bluew"], ["Grey", "Purple", "Yellow"]]),
+            
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
                            Price: ["+ $8.00/month", "+ $6.00/month", "+ $4.00/month"],
@@ -111,7 +112,8 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                            ScrollViewImages: [["nestSpecs", "nestThermo copy", "nestBlue"],
                                               ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"],
                                               ["2gigThermostat", "whiteAmazon Echo", "blackAmazonEcho"]],
-                           QntyNumbers: [[1, 2], [1, 2], [1, 2]])
+                           QntyNumbers: [[1, 2], [1, 2], [1, 2]],
+                           Types: [["", "", ""], ["", "", ""], ["", "", ""]]),
             
             
         ]
@@ -182,7 +184,7 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //Display
         destination.featureSVItemSVIDNumber = itemModel.itemModelIDNumber
         destination.featureSVItemSVQntyNumbers = itemModel.itemModelQntyNumbers
-        
+        destination.featureSVItemSVType = itemModel.itemModelType
         
         }
     

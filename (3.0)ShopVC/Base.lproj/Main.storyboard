@@ -580,7 +580,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="White" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLZ-I3-yVM">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xLZ-I3-yVM">
                                             <rect key="frame" x="55" y="454.66666666666669" width="100" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="vIw-5q-06v"/>
@@ -616,6 +616,17 @@
                                                 <action selector="qntyPopupPresses:" destination="tlV-mv-qQb" eventType="touchUpInside" id="1tc-dy-pJx"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYO-oC-RAd">
+                                            <rect key="frame" x="52" y="457" width="100" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="PBs-6W-Rt6"/>
+                                                <constraint firstAttribute="height" constant="30" id="q2g-Nc-kWR"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="qntyPopupPresses:" destination="tlV-mv-qQb" eventType="touchUpInside" id="RGy-UV-bGX"/>
+                                                <action selector="typePopupPressed:" destination="tlV-mv-qQb" eventType="touchUpInside" id="bt8-BX-wK1"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -629,7 +640,9 @@
                                         <constraint firstItem="cY0-Wf-ko8" firstAttribute="top" secondItem="6PE-F7-ox6" secondAttribute="bottom" constant="25" id="GyI-bK-NiW"/>
                                         <constraint firstItem="uTL-27-E0G" firstAttribute="top" secondItem="cY0-Wf-ko8" secondAttribute="bottom" constant="17" id="Iym-0o-wfO"/>
                                         <constraint firstItem="uTL-27-E0G" firstAttribute="leading" secondItem="kS5-cN-5Jw" secondAttribute="leading" id="OZg-1O-Ae6"/>
+                                        <constraint firstItem="yYO-oC-RAd" firstAttribute="leading" secondItem="cY0-Wf-ko8" secondAttribute="trailing" id="UaY-kc-4j6"/>
                                         <constraint firstItem="xLZ-I3-yVM" firstAttribute="centerY" secondItem="cY0-Wf-ko8" secondAttribute="centerY" id="WRQ-7v-qhT"/>
+                                        <constraint firstItem="yYO-oC-RAd" firstAttribute="centerY" secondItem="cY0-Wf-ko8" secondAttribute="centerY" id="ZM5-Tb-Gff"/>
                                         <constraint firstAttribute="trailing" secondItem="1lI-gP-lOk" secondAttribute="trailing" constant="10" id="av6-6z-3yQ"/>
                                         <constraint firstAttribute="trailing" secondItem="kFu-tG-Sjr" secondAttribute="trailing" constant="12" id="cRX-kY-vNB"/>
                                         <constraint firstItem="18Y-lU-bCS" firstAttribute="centerY" secondItem="6PE-F7-ox6" secondAttribute="centerY" id="dkm-Cg-hZM"/>
@@ -734,7 +747,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-2O-VBy">
                                 <rect key="frame" x="-343" y="218" width="300" height="300"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgI-dm-TLN">
+                                    <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgI-dm-TLN">
                                         <rect key="frame" x="0.0" y="40" width="300" height="260"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="520-90-JuU">
@@ -764,20 +777,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <pickerView hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qZ-7i-rge">
+                                        <rect key="frame" x="0.0" y="40" width="300" height="260"/>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="1qZ-7i-rge" firstAttribute="top" secondItem="7dz-2O-VBy" secondAttribute="top" constant="40" id="2Ie-mu-Y2h"/>
                                     <constraint firstItem="520-90-JuU" firstAttribute="top" secondItem="7dz-2O-VBy" secondAttribute="top" id="4Xj-CB-lg8"/>
                                     <constraint firstItem="vgI-dm-TLN" firstAttribute="leading" secondItem="7dz-2O-VBy" secondAttribute="leading" id="4ri-fh-JG4"/>
                                     <constraint firstItem="7QZ-hs-Crg" firstAttribute="leading" secondItem="7dz-2O-VBy" secondAttribute="leading" constant="8" id="9cF-yb-dOw"/>
                                     <constraint firstAttribute="trailing" secondItem="vgI-dm-TLN" secondAttribute="trailing" id="PQZ-0n-CKZ"/>
                                     <constraint firstItem="7QZ-hs-Crg" firstAttribute="top" secondItem="mkA-zx-bhc" secondAttribute="bottom" constant="8" id="Tpi-zM-dQZ"/>
                                     <constraint firstItem="vgI-dm-TLN" firstAttribute="top" secondItem="7dz-2O-VBy" secondAttribute="top" constant="40" id="WeJ-7F-gxa"/>
+                                    <constraint firstItem="1qZ-7i-rge" firstAttribute="leading" secondItem="7dz-2O-VBy" secondAttribute="leading" id="XuX-y5-JGF"/>
                                     <constraint firstAttribute="trailing" secondItem="7QZ-hs-Crg" secondAttribute="trailing" constant="8" id="Y6f-CG-hDe"/>
+                                    <constraint firstAttribute="bottom" secondItem="1qZ-7i-rge" secondAttribute="bottom" id="bb1-tN-4LP"/>
                                     <constraint firstItem="mkA-zx-bhc" firstAttribute="top" secondItem="7dz-2O-VBy" secondAttribute="top" constant="50" id="cdi-bp-3OP"/>
                                     <constraint firstAttribute="bottom" secondItem="vgI-dm-TLN" secondAttribute="bottom" id="cjt-ab-IX8"/>
                                     <constraint firstAttribute="trailing" secondItem="mkA-zx-bhc" secondAttribute="trailing" id="dHn-9z-wmT"/>
                                     <constraint firstAttribute="width" constant="300" id="dd0-wp-u2R"/>
+                                    <constraint firstAttribute="trailing" secondItem="1qZ-7i-rge" secondAttribute="trailing" id="dlD-qI-i2a"/>
                                     <constraint firstAttribute="height" constant="300" id="fZM-6R-o0P"/>
                                     <constraint firstItem="mkA-zx-bhc" firstAttribute="leading" secondItem="7dz-2O-VBy" secondAttribute="leading" id="mlB-w9-v18"/>
                                     <constraint firstAttribute="trailing" secondItem="520-90-JuU" secondAttribute="trailing" constant="12" id="wni-0g-SXj"/>
@@ -811,6 +831,9 @@
                         <outlet property="qntyPickerView" destination="vgI-dm-TLN" id="zHy-4G-XG5"/>
                         <outlet property="qntyPopupView" destination="7dz-2O-VBy" id="udd-g9-Bhn"/>
                         <outlet property="qntyTextField" destination="18Y-lU-bCS" id="pxk-HW-5aD"/>
+                        <outlet property="selectLabel" destination="7QZ-hs-Crg" id="Lhf-Un-6tH"/>
+                        <outlet property="typePickerView" destination="1qZ-7i-rge" id="ghc-DH-lLl"/>
+                        <outlet property="typeTextField" destination="xLZ-I3-yVM" id="sbi-xN-3wg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ka-G5-6XJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

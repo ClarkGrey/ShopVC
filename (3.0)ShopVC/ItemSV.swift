@@ -29,7 +29,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     var itemSVImageArray = [String]()
     
     //Display
-    var ItemSVIDNumber = String()
+    var itemSVIDNumber = String()
     
     @IBOutlet var pageController: UIPageControl!
     
@@ -41,7 +41,12 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     
     @IBOutlet var qntyPickerView: UIPickerView!
     @IBOutlet var qntyTextField: UITextField!
-    var ItemSVQntyNumbers = [Int]()
+    var itemSVQntyNumbers = [Int]()
+    
+    @IBOutlet var typePickerView: UIPickerView!
+    @IBOutlet var typeTextField: UITextField!
+    @IBOutlet var selectLabel: UILabel!
+    var itemSVType = [String]()
     
     
     
@@ -60,6 +65,10 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         qntyPickerView.delegate = self
         qntyPickerView.dataSource = self
+        
+        typePickerView.delegate = self
+        typePickerView.dataSource = self
+        typeTextField.text = itemSVType[0]
        
         
         
@@ -106,7 +115,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         pageController.numberOfPages = itemSVImageArray.count
         
         //Display
-        cell.itemViewIDNumber.text = ItemSVIDNumber
+        cell.itemViewIDNumber.text = itemSVIDNumber
             
         return cell
         }
@@ -163,15 +172,33 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return ItemSVQntyNumbers.count
+        
+        if pickerView.tag == 1 {
+            return itemSVQntyNumbers.count
+        } else {
+            return itemSVType.count
+            }
         }
+
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(ItemSVQntyNumbers[row])"
+        
+        if pickerView.tag == 1 {
+            return "\(itemSVQntyNumbers[row])"
+        } else {
+            return "\(itemSVType[row])"
+            }
+        
         }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        qntyTextField.text = "\(ItemSVQntyNumbers[row])"
+        
+        if pickerView.tag == 1 {
+            qntyTextField.text = "\(itemSVQntyNumbers[row])"
+        } else {
+            typeTextField.text = itemSVType[row]
+            }
+        
         }
     
     
@@ -181,7 +208,10 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         qntyCenterConstraint.constant = 0
         backgroundPopupCenterConstraint.constant = 0
         qntyPopupView.isHidden = false
+        qntyPickerView.isHidden = false
+        typePickerView.isHidden = true
         backgroundPopupButton.isHidden = false
+        selectLabel.text = "Select Quantity:"
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
                        options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
@@ -190,11 +220,31 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
             self.backgroundPopupButton.alpha = 0.5 } )
         }
     
+    @IBAction func typePopupPressed(_ sender: Any) {
+        
+        qntyCenterConstraint.constant = 0
+        backgroundPopupCenterConstraint.constant = 0
+        qntyPopupView.isHidden = false
+        qntyPickerView.isHidden = true
+        typePickerView.isHidden = false
+        backgroundPopupButton.isHidden = false
+        selectLabel.text = "Select Type:"
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
+                       options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
+        
+        UIView.animate(withDuration: 0.9, animations: {
+            self.backgroundPopupButton.alpha = 0.5 } )
+    }
+    
+    
     @IBAction func qntyPopupClose(_ sender: Any) {
         
         qntyCenterConstraint.constant = -400
         backgroundPopupCenterConstraint.constant = 450
         qntyPopupView.isHidden = true
+        qntyPickerView.isHidden = true
+        typePickerView.isHidden = true
         backgroundPopupButton.isHidden = true
         UIView.animate(withDuration: 0.0, animations: {
             self.view.layoutIfNeeded()

@@ -41,6 +41,7 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //ItmeSVDisplay
     var featureSVItemSVIDNumber = [String]()
     var featureSVItemSVQntyNumbers = [[Int]]()
+    var featureSVItemSVType = [[String]]()
     
         
 //---------------------------------------
@@ -105,8 +106,9 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.itemSVImageArray = featureSVItemSVScrollView[indexPath.row]
        
         //Display
-        destination.ItemSVIDNumber = featureSVItemSVIDNumber[indexPath.row]
-        destination.ItemSVQntyNumbers = featureSVItemSVQntyNumbers[indexPath.row]
+        destination.itemSVIDNumber = featureSVItemSVIDNumber[indexPath.row]
+        destination.itemSVQntyNumbers = featureSVItemSVQntyNumbers[indexPath.row]
+        destination.itemSVType = featureSVItemSVType[indexPath.row]
         
         //ItemSV TableView Cells
             //Needs Update
