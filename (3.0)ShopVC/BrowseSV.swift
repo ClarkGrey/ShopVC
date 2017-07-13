@@ -24,6 +24,8 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //ItemSV User Interface
     var itemSVArray = [ItemModelData]()
     
+    //SubSV
+    var subSVArray = [SubModelData]()
     
     
     
@@ -47,8 +49,8 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         featureSVArray = [
             
             FeatureModelData(title: "Amazon Echo - Alexa!", subText1: "Voice Interaction, Blah Blah,",
-                             subText2: "2nd Generation", price: "", image: "amazonFeature3",
-                             titleCell: ["Amazon Echo - Alexa!", "Google Home", "Echo Dot"],
+                             subText2: "2nd Generation", price: "", image: "amazon12",
+                             titleCell: ["Amazon Echo - Alexa...", "Google Home", "Echo Dot"],
                              subTextCell: ["New!", "", ""],
                              imageCell: ["blackAmazonEcho", "GoogleHome", "echoDot"]),
             
@@ -91,8 +93,6 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         
-        //Loading ItemSV by FeatureSV Item's
-        //let amazonEchoAlexa = ["MotionDetector", "CODetector"]
         
         itemSVArray = [
             
@@ -101,9 +101,13 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                           IDNumber: ["Division 034", "Division 016", "Division 048"],
                           ScrollViewImages: [["amazonFeature1", "whiteAmazon Echo", "blackAmazonEcho"],
                                               ["GoogleHome", "echoDot"],
-                                              ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot"]],
-                          QntyNumbers: [[1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3], [1, 2]],
-                          Types: [["Blue", "Grey", "White"], ["Orange", "Grey", "Bluew"], ["Grey", "Purple", "Yellow"]]),
+                                              ["echoDotDetails4", "echoDotDetails", "echoDot4", "echoDot", "echoDot5"]],
+                          QntyNumbers: [[1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3], [1, 2, 3, 4]],
+                          Types: [["Blue", "Grey", "White"], ["Orange", "Grey", "Bluew"], ["White", "Black", "Light Brown"]],
+                          TitleCell: [["Tech Specs", "Frequently Asked Questions", "What's Included","Warranty & Installation"],
+                                      ["Tech Specs", "Frequently Asked Questions", "What's Included", "Warranty & Installation"],
+                                      ["Tech Specs", "Frequently Asked Questions", "What's Included", "Warranty & Installation"]]),
+            
             
             
             ItemModelData(Title: ["Nest Thermostat", "Lyric T5 Thermostat", "Smart Thermostat"],
@@ -113,14 +117,35 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                               ["lyricT5Thermo", "nestThermo copy", "lyricT5Thermo", "2gigThermostat"],
                                               ["2gigThermostat", "whiteAmazon Echo", "blackAmazonEcho"]],
                            QntyNumbers: [[1, 2], [1, 2], [1, 2]],
-                           Types: [["", "", ""], ["", "", ""], ["", "", ""]]),
+                           Types: [["", "", ""], ["", "", ""], ["", "", ""]],
+                           TitleCell: [["Tech Specs", "Frequently Asked Questions", "What's Included","Warranty & Installation"],
+                                       ["Tech Specs", "Frequently Asked Questions", "What's Included", "Warranty & Installation"],
+                                       ["Tech Specs", "Frequently Asked Questions", "What's Included", "Warranty & Installation"]]),
             
             
-        ]
+            ]
+        
+        
+        //(ItemSV TableView Cells)
+        subSVArray = [
+            
+            SubModelData(ItemCellImages: [
+                [["amazonFeature1", "amazonFeature1", "", ""], ["blackAmazonEcho", ""], ["whiteAmazon Echo", "blackAmazonEcho"]],
+                [["amazonFeature1", "amazonFeature1", ""], ["blackAmazonEcho", "", ""], ["whiteAmazon Echo", "blackAmazonEcho"]],
+                [["gold8", "whiteAmazon Echo"], ["blackAmazonEcho", "whiteAmazon Echo", "nestBlue", ""], ["whiteAmazon Echo", "blackAmazonEcho"]]
+                ]),
+            
+            SubModelData(ItemCellImages: [
+                [["amazonFeature1", "amazonFeature1", "", ""], ["blackAmazonEcho", ""], ["whiteAmazon Echo", "blackAmazonEcho"]],
+                [["amazonFeature1", "amazonFeature1", "", ""], ["blackAmazonEcho", ""], ["whiteAmazon Echo", "blackAmazonEcho"]],
+                [["amazonFeature1", "amazonFeature1", "", ""], ["blackAmazonEcho", ""], ["whiteAmazon Echo", "blackAmazonEcho"]]
+                ])
+            
+            ]
         
        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+            //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 //---------------------------------------
 
@@ -185,6 +210,18 @@ class BrowseSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.featureSVItemSVIDNumber = itemModel.itemModelIDNumber
         destination.featureSVItemSVQntyNumbers = itemModel.itemModelQntyNumbers
         destination.featureSVItemSVType = itemModel.itemModelType
+        
+        //Title Cells
+        destination.featureSVItemSVTitleCells = itemModel.itemModelTitleCell
+        
+        //----------------------------------
+        
+        //SubSV (ItemSV TableView Cells)
+        let subModel : SubModelData
+        subModel = subSVArray[indexPath.row]
+        
+        destination.featureSVSubSVItemCells = subModel.itemModelItemCells
+        
         
         }
     

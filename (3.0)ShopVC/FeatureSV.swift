@@ -43,6 +43,12 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var featureSVItemSVQntyNumbers = [[Int]]()
     var featureSVItemSVType = [[String]]()
     
+    //Title Cells
+    var featureSVItemSVTitleCells = [[String]]()
+    
+    //SubSV (ItemSV TableView Cells)
+    var featureSVSubSVItemCells = [[[String]]]()  //Added
+  
         
 //---------------------------------------
     override func viewDidLoad() {
@@ -51,7 +57,7 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         featureSVTableView.delegate = self
         featureSVTableView.dataSource = self
         
-        numberOfResults.text = "Total Items: \(featureSVTitleCell.count)"
+        numberOfResults.text = "Items: \(featureSVTitleCell.count)"
        
         
         
@@ -110,9 +116,14 @@ class FeatureSV: UIViewController, UITableViewDelegate, UITableViewDataSource {
         destination.itemSVQntyNumbers = featureSVItemSVQntyNumbers[indexPath.row]
         destination.itemSVType = featureSVItemSVType[indexPath.row]
         
-        //ItemSV TableView Cells
-            //Needs Update
-    
+        //Title Cells
+        destination.itemSVTitleCell = featureSVItemSVTitleCells[indexPath.row]
+        
+ 
+        //SubSV (ItemSV TableView Cells)
+        destination.itemSVSubSVItemCells = featureSVSubSVItemCells[indexPath.row] //Added
+       
+        
         }
     
 //---------------------------------------

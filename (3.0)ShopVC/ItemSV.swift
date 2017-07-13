@@ -20,7 +20,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     var itemSVTitleCell = [String]()
     
     //Item Top View
-    var itemSVTitle = String() //THESE WHERE THE PROBLEM (not supposed to be an array!!!)
+    var itemSVTitle = String() //THESE WHERE THE PROBLEM (not supposed to be an array!!!
     var itemSVPrice = String()
     
     //Item ScrollView Image Array
@@ -30,12 +30,16 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     
     //Display
     var itemSVIDNumber = String()
-    
     @IBOutlet var pageController: UIPageControl!
     
-    //Popups
+    //SubSV (ItemSV TableView Cells)
+    var itemSVSubSVItemCells = [[String]]() //Added
+   
+    
+    //Qnty, Type & Background Popups
     @IBOutlet var qntyCenterConstraint: NSLayoutConstraint!
     @IBOutlet var qntyPopupView: UIView!
+    
     @IBOutlet var backgroundPopupButton: UIButton!
     @IBOutlet var backgroundPopupCenterConstraint: NSLayoutConstraint!
     
@@ -47,6 +51,11 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
     @IBOutlet var typeTextField: UITextField!
     @IBOutlet var selectLabel: UILabel!
     var itemSVType = [String]()
+    
+    //Add to Bag Popup
+    @IBOutlet var addToBagPopupView: UIView!
+    @IBOutlet var addToBagCenterConstraint: NSLayoutConstraint!
+    
     
     
     
@@ -68,13 +77,11 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         
         typePickerView.delegate = self
         typePickerView.dataSource = self
+        
+        //Default Type Text
         typeTextField.text = itemSVType[0]
+        
        
-        
-        
-        itemSVTitleCell = ["Tech Specs", "Frequently Asked Questions", "What's Included",
-                           "Warranty & Installation"]
-        
       
         
         
@@ -84,8 +91,8 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         super.didReceiveMemoryWarning()
         
         }
-//---------------------------------------
-    //TableView 
+//----------------- TableView & Segue ----------------------
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -108,25 +115,30 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         cell.itemViewTitleCell.text = itemSVTitleCell[indexPath.row]
         
         //Item Top View
-        cell.itemViewTitle.text = itemSVTitle
+        cell.itemViewTitle.text = itemSVTitle //Currently Hidden
         cell.itemViewPrice.text = itemSVPrice
         
         //Item ScrollView Page Controller
         pageController.numberOfPages = itemSVImageArray.count
         
         //Display
-        cell.itemViewIDNumber.text = itemSVIDNumber
+        cell.itemViewIDNumber.text = itemSVIDNumber //Currently Hidden
             
         return cell
         }
     
     
-    
+    //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let indexPath : NSIndexPath = self.itemSVTableView.indexPathForSelectedRow! as NSIndexPath
+        let destination = segue.destination as! SubSV
+        
+            destination.subSVItemCells = itemSVSubSVItemCells[indexPath.row]
+        
+        
         }
-//---------------------------------------
-    //ScrollView Images
+//------------------ ScrollView Images & Page Controller ---------------------
     
     override func viewDidAppear(_ animated: Bool) {
     
@@ -135,38 +147,37 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         for x in 0..<itemSVImageArray.count {
             let imageName = UIImage(named: imageArrayString[x])
             let imageDisplay = UIImageView(image: imageName)
+            imageDisplay.clipsToBounds = true
             itemSVUIImageArray.append(imageDisplay)
+            
      
-            imageDisplay.contentMode = .scaleAspectFit
-            let xPosition = self.itemSVScrollView.frame.width * CGFloat(x) + 15 //Left Space
-            imageDisplay.frame = CGRect(x: xPosition, y: 0, width: self.itemSVScrollView.frame.width - 30, //Right Space
-                height: self.itemSVScrollView.frame.height)
-     
+            imageDisplay.contentMode = .scaleAspectFill
+            let xPosition = self.itemSVScrollView.frame.width * CGFloat(x) //Left
+            imageDisplay.frame = CGRect(x: xPosition, y: 0, width: self.itemSVScrollView.frame.width, //Right (double opp of left)
+                height: self.itemSVScrollView.frame.height) //Bottom
+                //Height needs to be the same as the scrollview top constraint in main.storyboard
+        
         itemSVScrollView.contentSize.width  = itemSVScrollView.frame.width * CGFloat(x + 1)
         itemSVScrollView.addSubview(imageDisplay)
         }
      
-     itemSVScrollView.clipsToBounds = false
-     pageController.numberOfPages = itemSVImageArray.count
-     }
+    //Page Controller Number
+    itemSVScrollView.clipsToBounds = true
+    pageController.numberOfPages = itemSVImageArray.count
+    }
     
     
+    
+    //Page Controller Movement
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let page = scrollView.contentOffset.x / scrollView.frame.size.width
         pageController.currentPage = Int(page)
-    }
+        }
     
+//----------------- Popups ----------------------
     
-    func titleAndPrice() {
-        
-        //Forgot wtf i was doing here
-    }
-    
-    
-//---------------------------------------
-    //Popups (Qnty)
-    
+    //Qnty & Types
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
         }
@@ -202,7 +213,7 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         }
     
     
-    
+    //Qnty Pressed
     @IBAction func qntyPopupPresses(_ sender: Any) {
         
         qntyCenterConstraint.constant = 0
@@ -212,14 +223,13 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         typePickerView.isHidden = true
         backgroundPopupButton.isHidden = false
         selectLabel.text = "Select Quantity:"
-        
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
                        options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
-        
         UIView.animate(withDuration: 0.9, animations: {
             self.backgroundPopupButton.alpha = 0.5 } )
         }
     
+    //Type Pressed
     @IBAction func typePopupPressed(_ sender: Any) {
         
         qntyCenterConstraint.constant = 0
@@ -229,15 +239,13 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
         typePickerView.isHidden = false
         backgroundPopupButton.isHidden = false
         selectLabel.text = "Select Type:"
-        
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
                        options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
-        
         UIView.animate(withDuration: 0.9, animations: {
             self.backgroundPopupButton.alpha = 0.5 } )
-    }
+        }
     
-    
+    //Close Qnty
     @IBAction func qntyPopupClose(_ sender: Any) {
         
         qntyCenterConstraint.constant = -400
@@ -251,20 +259,60 @@ class ItemSV: UIViewController, UITableViewDelegate, UITableViewDataSource, UISc
             self.backgroundPopupButton.alpha = 0.0 } )
         }
     
-  
+  //Closes all popup views and moves its constant by pressing Background
     @IBAction func backgroundPopupClose(_ sender: Any) {
         
         qntyCenterConstraint.constant = -400
         backgroundPopupCenterConstraint.constant = 450
+        addToBagCenterConstraint.constant = -500
         qntyPopupView.isHidden = true
         backgroundPopupButton.isHidden = true
+        addToBagPopupView.isHidden = true
         UIView.animate(withDuration: 0.0, animations: {
             self.view.layoutIfNeeded()
             self.backgroundPopupButton.alpha = 0.0 } )
         }
     
     
+    //Add to Bag Popup Pressed
+    @IBAction func addToBagPressed(_ sender: UIButton) {
+        
+        addToBagCenterConstraint.constant = 0
+        backgroundPopupCenterConstraint.constant = 0
+        addToBagPopupView.isHidden = false
+        backgroundPopupButton.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0,
+                       options: .curveEaseOut, animations: { self.view.layoutIfNeeded() } , completion: nil)
+        UIView.animate(withDuration: 0.9, animations: {
+            self.backgroundPopupButton.alpha = 0.5 } )
+        
+        //---------------------
+        
+        
+        
+        
+        
+            //This is where the add to bag cell info is suppose to go, i think.
+       
+        
+        
+        
+        
+    }
     
+    //Closes Bag Popup and moves it
+    @IBAction func addToBagClose(_ sender: Any) {
+        
+        addToBagCenterConstraint.constant = -500
+        backgroundPopupCenterConstraint.constant = 450
+        addToBagPopupView.isHidden = true
+        backgroundPopupButton.isHidden = true
+        UIView.animate(withDuration: 0.0, animations: {
+            self.view.layoutIfNeeded()
+            self.backgroundPopupButton.alpha = 0.0 } )
+        
+        }
+ 
 //---------------------------------------
 }
 
